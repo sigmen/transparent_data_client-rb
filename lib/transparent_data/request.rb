@@ -26,7 +26,7 @@ module TransparentData
     end
 
     def fetch_country_id(country)
-      COUNTRY_TO_KEY_MAP.fetch(country.to_sym) do
+      COUNTRY_TO_KEY_MAP.fetch(country.to_s.downcase.to_sym) do
         raise TransparentData::UnknownCountryError, "Unknown country: #{country.inspect}"
       end
     end
