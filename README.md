@@ -1,8 +1,6 @@
 # TransparentData RB
 [![Gem Version](https://badge.fury.io/rb/transparent_data-rb.svg)](https://badge.fury.io/rb/transparent_data-rb) [![Build Status](https://travis-ci.com/sigmen/transparent_data-rb.svg?branch=master)](https://travis-ci.com/sigmen/transparent_data-rb)
 
-# UNDER DEVELOPMENT
-
 ## Supports
 
 Ruby `>= 2.4`.
