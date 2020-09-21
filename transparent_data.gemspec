@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Roman Kakorin']
   spec.email         = ['romchky1@gmail.com']
 
-  spec.summary       = 'Gem implements multitable iheritance.'
-  spec.description   = 'Gem implements multitable iheritance.'
+  spec.summary       = 'https://transparentdata.eu API client'
+  spec.description   = 'https://transparentdata.eu API client'
   spec.homepage      = 'https://github.com/sigmen/transparent_data-rb'
   spec.license       = 'MIT'
   spec.required_ruby_version = '>= 2.4.0'
