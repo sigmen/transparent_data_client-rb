@@ -9,5 +9,5 @@ module TransparentData
   extend TransparentData::Configurable
   extend TransparentData::ModuleFunctions
 
-  initialize_config_attrs(:url, :user, :password, :key)
+  initialize_config_accessors(:url, :user, :password, :key)
 end

@@ -1,6 +1,12 @@
 module TransparentData
   module Configurable
-    def initialize_config_attrs(*attributes)
+    def configure
+      yield self
+    end
+
+    private
+
+    def initialize_config_accessors(*attributes)
       module_eval do
         attributes.each do |attr|
           define_singleton_method(attr) do
@@ -12,10 +18,6 @@ module TransparentData
           end
         end
       end
-    end
-
-    def configure
-      yield self
     end
   end
 end
