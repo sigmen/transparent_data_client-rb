@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    transparent_data-rb (0.1.6)
+    transparent_data-rb (0.1.7)
       bundler (~> 2.1)
       faraday
       rake (~> 13.0)
