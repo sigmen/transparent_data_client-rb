@@ -4,7 +4,7 @@ require 'transparent_data/actions/add'
 require 'transparent_data/actions/result'
 
 module TransparentData
-  module ModuleFunctions
+  module Actions
     def search(country, query_str)
       TransparentData::Actions::Search.new(client, country, query_str).call
     end

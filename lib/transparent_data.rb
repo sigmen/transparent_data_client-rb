@@ -4,12 +4,11 @@ require 'json'
 require 'transparent_data/version'
 require 'transparent_data/exceptions'
 require 'transparent_data/configurable'
-require 'transparent_data/request'
-require 'transparent_data/module_functions'
+require 'transparent_data/actions'
 
 module TransparentData
   extend TransparentData::Configurable
-  extend TransparentData::ModuleFunctions
+  extend TransparentData::Actions
 
   initialize_config_accessors(:url, :user, :password, :key)
 end
