@@ -14,7 +14,7 @@ module TransparentData
           end
 
           define_singleton_method("#{attr}=") do |value|
-            public_send(attr) || instance_variable_set("@#{attr}", value)
+            instance_variable_get("@#{attr}") || instance_variable_set("@#{attr}", value)
           end
         end
       end
