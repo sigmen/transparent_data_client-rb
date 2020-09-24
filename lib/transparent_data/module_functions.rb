@@ -2,8 +2,16 @@ require 'transparent_data/request'
 
 module TransparentData
   module ModuleFunctions
-    def search(country, query)
-      TransparentData::Request.call(client, country, query)
+    def search(country, query_str)
+      TransparentData::Actions::Search.new(client, country, query_str).call
+    end
+
+    def add(source, method, parameters)
+      TransparentData::Actions::Add.new(client, source, method, parameters).call
+    end
+
+    def result(ident)
+      TransparentData::Actions::Result.new(client, ident).call
     end
 
     private
