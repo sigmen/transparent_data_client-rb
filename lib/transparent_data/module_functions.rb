@@ -1,4 +1,7 @@
 require 'transparent_data/request'
+require 'transparent_data/actions/search'
+require 'transparent_data/actions/add'
+require 'transparent_data/actions/result'
 
 module TransparentData
   module ModuleFunctions
