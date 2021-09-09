@@ -4,23 +4,22 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'transparent_data'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'transparent_data-rb'
-  spec.version       = TransparentData::VERSION
-  spec.authors       = ['Roman Kakorin']
-  spec.email         = ['romchky1@gmail.com']
-
-  spec.summary       = 'https://transparentdata.eu API client'
-  spec.description   = 'https://transparentdata.eu API client'
-  spec.homepage      = 'https://github.com/sigmen/transparent_data-rb'
-  spec.license       = 'MIT'
-  spec.required_ruby_version = '>= 2.4.0'
+  spec.name = 'transparent_data_client-rb'
+  spec.version = TransparentData::VERSION
+  spec.authors = ['Roman Kakorin']
+  spec.email = ['romchky1@gmail.com']
+  spec.summary = 'Transparent Data API https://transparentdata.pl ruby client'
+  spec.description = 'Transparent Data API https://transparentdata.pl ruby client'
+  spec.homepage = 'https://github.com/sigmen/transparent_data_client-rb'
+  spec.license = 'MIT'
+  spec.required_ruby_version = '>= 2.5.0'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = spec.homepage
-  spec.metadata['changelog_uri'] = 'http://github.com/sigmen/transparent_data-rb/blob/master/CHANGELOG.md'
+  spec.metadata['changelog_uri'] = 'http://github.com/sigmen/transparent_data_client-rb/blob/master/CHANGELOG.md'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -33,7 +32,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'bundler', '~> 2.1'
-  spec.add_dependency 'faraday'
+  spec.add_dependency 'faraday', '~> 1.7'
+  spec.add_dependency 'oj', '~> 3.13'
   spec.add_dependency 'rake', '~> 13.0'
 
   spec.add_development_dependency 'pry'

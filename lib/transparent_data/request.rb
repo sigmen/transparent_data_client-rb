@@ -1,27 +1,44 @@
-require 'transparent_data/response/struct'
+require 'transparent_data/response'
 
 module TransparentData
   class Request
-    class << self
-      def call(client, method, query: {}, json: {})
-        response = client.post(build_path(method, query), json.to_json)
+    # @param client [Faraday::Client] HTTP Client
+    # @param method [Symbol] HTTP Method
+    # @param endpoint [String] Endpoint
+    # @param query [Hash] Query params
+    # @param body [Hash] Request body
+    def initialize(client, method, endpoint, query: {}, body: {})
+      @client = client
+      @method = method
+      @endpoint = endpoint
+      @query = query
+      @body = body
+    end
 
-        TransparentData::Response::Struct.new(response)
-      end
+    # Sends request to TransparentData
+    # @returns [TransparentData::Response] Response from service
+    def call
+      response = @client.post(build_path, @body.to_json)
 
-      private
+      log_response(response)
 
-      def build_path(method, query)
-        base_path = "/#{TransparentData.key}/#{method}"
+      TransparentData::Response.new(response)
+    end
 
-        return base_path unless query&.any?
+    private
 
-        base_path.concat("?#{convert_params_to_query(query)}")
-      end
+    def build_path
+      base_path = "/#{TransparentData.key}/#{@endpoint}"
 
-      def convert_params_to_query(params)
-        params.map { |pair| pair.join('=') }.join('&')
-      end
+      return base_path if @query&.empty?
+
+      query = @query.map { |pair| pair.join('=') }.join('&')
+
+      base_path.concat("?#{query}")
+    end
+
+    def log_response(response)
+      TransparentData.logger.info(TransparentData.log_formatter.call(response))
     end
   end
 end

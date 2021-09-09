@@ -1,21 +1,17 @@
 module TransparentData
   module Actions
     class Result
-      attr_reader :client, :ident
-
+      # @param client [Faraday::Client] HTTP Client
+      # @param ident [String] Dataset ID
       def initialize(client, ident)
         @client = client
         @ident = ident
       end
 
+      # See https://apidoc.transparentdata.pl/dataintegrator.html#endpoint-result
+      # @return [TransparentData::Response] response from the service
       def call
-        TransparentData::Request.call(client, 'result', query: build_query(ident))
-      end
-
-      private
-
-      def build_query
-        { ident: ident }
+        TransparentData::Request.call(@client, :post, 'result', query: { ident: @ident })
       end
     end
   end

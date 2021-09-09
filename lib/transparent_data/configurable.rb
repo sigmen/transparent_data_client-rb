@@ -6,15 +6,17 @@ module TransparentData
 
     private
 
+    # It initializes reader and writer for each given attribute name
+    # @param attributes [Array] List of attributes
     def initialize_config_accessors(*attributes)
       module_eval do
-        attributes.each do |attr|
-          define_singleton_method(attr) do
-            instance_variable_get("@#{attr}") || raise(NotImplementedError, "Need to configure: #{attr}")
+        attributes.each do |attribute|
+          define_singleton_method(attribute) do
+            instance_variable_get("@#{attribute}") || raise(NotImplementedError, "Need to configure: #{attribute}")
           end
 
-          define_singleton_method("#{attr}=") do |value|
-            instance_variable_get("@#{attr}") || instance_variable_set("@#{attr}", value)
+          define_singleton_method("#{attribute}=") do |value|
+            instance_variable_get("@#{attribute}") || instance_variable_set("@#{attribute}", value)
           end
         end
       end
