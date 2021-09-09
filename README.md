@@ -1,9 +1,9 @@
-# Transparent Data Ruby Client (NOT READY FOR USE)
+# Transparent Data Ruby Client
 [![Gem Version](https://badge.fury.io/rb/transparent_data_client-rb.svg)](https://badge.fury.io/rb/transparent_data_client-rb) [![Build Status](https://travis-ci.com/sigmen/transparent_data_client-rbsvg?branch=master)](https://travis-ci.com/sigmen/transparent_data_client-rb)
 
 ## Supports
 
-Ruby `>= 2.4`.
+Ruby `>= 2.7`.
 
 ## Installation
 
@@ -20,7 +20,7 @@ Or install with:
     $ gem install transparent_data_client-rb
 
 ### Usage
-Two actions are available for using:
+You can call TransparentData API using this:
 * add
 ```ruby
 response = TransparentData.add(source, method, parameters)
@@ -32,7 +32,7 @@ response = TransparentData.result(ident)
 
 Response:
 ```ruby
-response.body # => [{...}]
+response.body # => { content: {...}}
 response.status # => 200
 response.headers # => {...}
 response.success? # => true
@@ -40,14 +40,13 @@ response.success? # => true
 
 #### Configuration
 
-Before using the gem you will need to configure some parameters:
+Before using the gem you need to configure some parameters:
 
 ```ruby
 TransparentData.configure do |config|
-    config.url = 'https://transparentdata.pl/' # You can using any another url for test environment
-    config.username = 'user' # Username for HTTP Basic
-    config.password = 'password' # Password for HTTP Basic
-    config.key = 'key' # API Key
+    config.username = 'user' # TransparentData username
+    config.password = 'password' # TransparentData password
+    config.key = 'key' # TransparentData API Key
     config.response_symbolize_keys = true # Symbolize response body keys (default: true)
 end
 ```
